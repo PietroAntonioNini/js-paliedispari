@@ -15,6 +15,9 @@ function pariODispari(sum) {
     }
 }
 
+//inizializzo una variabile con la scelta pari o dispari dell'utente
+let userChoice;
+
 //aggiungo una funzione al click
 document.querySelector("#play").addEventListener("click", 
 
@@ -25,9 +28,12 @@ document.querySelector("#play").addEventListener("click",
         //salvo una const con il numero dell'utente
         const userNumber = Number(document.querySelector("#user-number").value);
 
-        if (userNumber < 1 || userNumber > 5 || userNumber === "") {
+        //modifico la let con la scelta pari o dispari
+        userChoice = document.querySelector("#user-choice").value;
+
+        if (userNumber < 1 || userNumber > 5 || userNumber === "" || userChoice ==="") {
             //stampo l'errore
-            document.querySelector("#result").innerText = "Per favore, inserisci un numero valido da 1 a 5.";
+            document.querySelector("#result").innerText = `Per favore, inserisci un numero valido da 1 a 5 e assicurati di aver scelto "pari" o "dispari".` ;
 
         } else {
             //sommo i due valori
@@ -35,6 +41,13 @@ document.querySelector("#play").addEventListener("click",
 
             //stampo il risultato
             document.querySelector("#result").innerText = `Il computer ha tirato ${randomNumber}: E' uscito ${pariODispari(sum)}!`;
+
+            if (pariODispari(sum) == userChoice) {
+                document.querySelector("#choice-result").innerText = "Hai indovinato 🎉";
+
+            } else {
+                document.querySelector("#choice-result").innerText = "Non hai indovinato 🥹";
+            }
         }
     }
 )
