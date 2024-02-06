@@ -15,18 +15,28 @@ function pariODispari(sum) {
     }
 }
 
-//salvo una costante con il numero casuale
-const randomNumber = randomNumber5();
-console.log(randomNumber);
-
 //aggiungo una funzione al click
 document.querySelector("#play").addEventListener("click", 
 
     function() {
-        const userNumber = Number(document.querySelector("#user-number").value);
-        const sum = randomNumber + userNumber;
-        console.log(sum);
+        //salvo una const con il numero casuale
+        const randomNumber = randomNumber5();
 
-        document.querySelector("#result").innerText = pariODispari(sum);
+        //salvo una const con il numero dell'utente
+        const userNumber = Number(document.querySelector("#user-number").value);
+
+        if (userNumber < 1 || userNumber > 5 || userNumber === "") {
+            //stampo l'errore
+            document.querySelector("#result").innerText = "Per favore, inserisci un numero valido da 1 a 5.";
+
+        } else {
+            //sommo i due valori
+            const sum = randomNumber + userNumber;
+
+            //stampo il risultato
+            document.querySelector("#result").innerText = `Il computer ha tirato ${randomNumber}: E' uscito ${pariODispari(sum)}!`;
+        }
     }
 )
+
+
